@@ -3,6 +3,7 @@ kind: Kustomization
 metadata:
   name: test-cluster
 spec:
+  targetNamespace: default # replace with your Namespace of choice
   interval: 10m
   patches:
   - patch: |-
