@@ -1,0 +1,16 @@
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: HcloudMachineTemplate
+metadata:
+  name: control-plane-0.1.0
+spec:
+  template:
+    metadata:
+      labels:
+        type: control-plane
+    spec:
+      imageName: PLACEHOLDER
+      placementGroupName: control-plane
+      type: cx32   # will be replaced by variable override, but needs to be a legit hcloud instance type
+      publicNetwork:
+        enableIPv4: true
+        enableIPv6: true

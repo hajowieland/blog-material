@@ -1,0 +1,16 @@
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: HcloudMachineTemplate
+metadata:
+  name: worker-0.1.0
+spec:
+  template:
+    metadata:
+      labels:
+        type: worker
+    spec:
+      imageName: PLACEHOLDER
+      placementGroupName: worker
+      type: cx32   # will be replaced by variable override, but needs to be a legit hcloud instance type
+      publicNetwork:
+        enableIPv4: true
+        enableIPv6: true

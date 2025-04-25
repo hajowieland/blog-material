@@ -1,0 +1,31 @@
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: HetznerClusterTemplate
+metadata:
+  name: hetzner-0.1.0
+spec:
+  template:
+    spec:
+      controlPlaneEndpoint:
+        host: ""
+        port: 443
+      controlPlaneLoadBalancer:
+        region: fsn1
+      controlPlaneRegions:
+        - fsn1
+        - hel1
+        - nbg1
+      hcloudNetwork:
+        enabled: true
+        networkZone: eu-central
+      hcloudPlacementGroups:
+        - name: control-plane
+          type: spread
+        - name: worker
+          type: spread
+      hetznerSecretRef:
+        key:
+          hcloudToken: hcloud
+        name: hetzner
+      sshKeys:
+        hcloud:
+          - name: id_ed25519

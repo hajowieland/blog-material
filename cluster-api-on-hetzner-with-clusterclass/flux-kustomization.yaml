@@ -1,0 +1,24 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: test-cluster
+spec:
+  interval: 10m
+  patches:
+  - patch: |-
+      apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+      kind: HetznerClusterTemplate
+      metadata:
+        name: hetzner-0.1.0
+      spec:
+        template:
+          spec:
+            sshKeys:
+              hcloud:
+                - name: your-hetzner-ssh-key-name
+  sourceRef:
+    kind: GitRepository
+    name: hajowieland-blog-material
+  path: "./deploy-cluster-api-operator-providers-with-flux/cluster-api-on-hetzner-with-clusterclass/resources"
+  prune: true
+  timeout: 1m

@@ -1,0 +1,22 @@
+apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
+kind: KubeadmConfigTemplate
+metadata:
+  name: kubeadm-config-0.1.0
+spec:
+  template:
+    spec:
+      format: ignition # remove when using Ubuntu
+      joinConfiguration:
+        nodeRegistration:
+          kubeletExtraArgs:
+            anonymous-auth: "false"
+            authentication-token-webhook: "true"
+            authorization-mode: Webhook
+            cloud-provider: external
+            event-qps: "5"
+            kubeconfig: /etc/kubernetes/kubelet.conf
+            max-pods: "110"
+            read-only-port: "0"
+            rotate-server-certificates: "true"
+            tls-cipher-suites: TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+            tls-min-version: VersionTLS12
