@@ -19,7 +19,7 @@ spec:
       - name: imageName
         value: cluster-api-flatcar-stable-4152.2.2-v1.32.4-1745487823
       - name: instanceType
-        value: cax21
+        value: cx22
     class: hetzner-0.1.0
     version: v1.32.4
     controlPlane:
@@ -29,7 +29,7 @@ spec:
           - name: imageName
             value: cluster-api-flatcar-stable-4152.2.2-v1.32.4-1745487823
           - name: instanceType
-            value: cax11
+            value: cx22
     workers:
       machineDeployments:
         - class: worker
