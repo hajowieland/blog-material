@@ -16,7 +16,23 @@ spec:
           spec:
             sshKeys:
               hcloud:
-                - name: your-hetzner-ssh-key-name
+                - name: your-hetzner-ssh-key-name # replace me
+  - patch: |-
+      apiVersion: cluster.x-k8s.io/v1beta1
+      kind: Cluster
+      metadata:
+        name: test
+      spec:
+        topology:
+          variables:
+            - name: imageName
+              value: cluster-api-flatcar-stable-4152.2.2-v1.32.4-1745487823 # replace me
+          version: v1.32.4 # replace me
+          controlPlane:
+            variables:
+              overrides:
+                - name: imageName
+                  value: cluster-api-flatcar-stable-4152.2.2-v1.32.4-1745487823 # replace me
   sourceRef:
     kind: GitRepository
     name: hajowieland-blog-material

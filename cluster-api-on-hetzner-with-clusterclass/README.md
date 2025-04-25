@@ -54,9 +54,9 @@ kubectl create secret generic hetzner \
   --from-literal=hcloud=$HCLOUD_TOKEN
 ```
 
-## Kustomization with patch
+## Kustomization with patches
 
-If you have created both Secrets, you just need to adapt the patch to match the Hetzner SSH Key name for your project.
+If you have created both Secrets, you just need to adapt the patch to match the Hetzner SSH Key name for your project. Then we patch the kubernetes version and set the image name you created in [Part1](https://wieland.tech/blog/cluster-api-image-builder-hcloud) for your Cluster.
 
 ```yaml showLineNumbers
 apiVersion: source.toolkit.fluxcd.io/v1
@@ -86,7 +86,24 @@ spec:
           spec:
             sshKeys:
               hcloud:
-                - name: your-hetzner-ssh-key-name
+                - name: your-hetzner-ssh-key-name # replace me
+  - patch: |-
+      apiVersion: cluster.x-k8s.io/v1beta1
+      kind: Cluster
+      metadata:
+        name: test
+      spec:
+        topology:
+          variables:
+            - name: imageName
+              value: cluster-api-flatcar-stable-4152.2.2-v1.32.4-1745487823 # replace me
+          version: v1.32.4 # replace me
+          controlPlane:
+            variables:
+              overrides:
+                - name: imageName
+                  value: cluster-api-flatcar-stable-4152.2.2-v1.32.4-1745487823 # replace me
+
   sourceRef:
     kind: GitRepository
     name: hajowieland-blog-material
