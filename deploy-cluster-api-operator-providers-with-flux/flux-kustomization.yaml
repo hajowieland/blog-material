@@ -10,3 +10,20 @@ spec:
   path: "./deploy-cluster-api-operator-providers-with-flux/capi-operator"
   prune: true
   timeout: 1m
+
+---
+
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: capi-operator-providers
+spec:
+  dependsOn:
+    - name: capi-operator
+  interval: 10m
+  sourceRef:
+    kind: GitRepository
+    name: hajowieland-blog-material
+  path: "./deploy-cluster-api-operator-providers-with-flux/capi-operator/providers"
+  prune: true
+  timeout: 1m

@@ -1,14 +1,12 @@
 apiVersion: operator.cluster.x-k8s.io/v1alpha2
-kind: CoreProvider
+kind: ControlPlaneProvider
 metadata:
-  name: cluster-api
+  name: kubeadm
+  namespace: capi-operator-system
 spec:
   version: v1.9.6
   manager:
     featureGates:
-      ClusterResourceSet: true
+      MachinePool: true
       ClusterTopology: true
       KubeadmBootstrapFormatIgnition: true
-      MachinePool: true
-      MachineSetPreflightChecks: false
-      RuntimeSDK: false

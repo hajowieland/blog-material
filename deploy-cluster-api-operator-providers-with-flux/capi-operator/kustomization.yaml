@@ -4,10 +4,3 @@ kind: Kustomization
 resources:
   # renovate: datasource=github-releases depName=kubernetes-sigs/cluster-api-operator
   - https://github.com/kubernetes-sigs/cluster-api-operator/releases/download/v0.17.1/operator-components.yaml
-
-components:
-  - addon
-  - bootstrap
-  - controlplane
-  - core
-  - infrastructure
