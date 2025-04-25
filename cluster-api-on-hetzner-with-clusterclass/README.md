@@ -97,17 +97,20 @@ spec:
           variables:
             - name: imageName
               value: cluster-api-flatcar-stable-4152.2.2-v1.32.4-1745487823 # replace me
+            - name: instanceType
+              value: cx22
           version: v1.32.4 # replace me
           controlPlane:
             variables:
               overrides:
                 - name: imageName
                   value: cluster-api-flatcar-stable-4152.2.2-v1.32.4-1745487823 # replace me
-
+                - name: instanceType
+                  value: cx22
   sourceRef:
     kind: GitRepository
     name: hajowieland-blog-material
-  path: "./deploy-cluster-api-operator-providers-with-flux/cluster-api-on-hetzner-with-clusterclass"
+  path: "./cluster-api-on-hetzner-with-clusterclass/resources"
   prune: true
   timeout: 1m
 ```
