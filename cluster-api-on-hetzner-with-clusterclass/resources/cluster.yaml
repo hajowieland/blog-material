@@ -28,7 +28,7 @@ spec:
         overrides:
           - name: imageName
             value: cluster-api-flatcar-stable-4152.2.2-v1.32.4-1745487823
-          - name: type
+          - name: instanceType
             value: cax11
     workers:
       machineDeployments:
