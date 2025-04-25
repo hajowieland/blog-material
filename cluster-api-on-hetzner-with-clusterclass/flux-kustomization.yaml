@@ -19,6 +19,6 @@ spec:
   sourceRef:
     kind: GitRepository
     name: hajowieland-blog-material
-  path: "./deploy-cluster-api-operator-providers-with-flux/cluster-api-on-hetzner-with-clusterclass/resources"
+  path: "./cluster-api-on-hetzner-with-clusterclass/resources"
   prune: true
   timeout: 1m
